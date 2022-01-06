@@ -10,27 +10,31 @@ import ssl
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
+print(' 开始')
+
 
 def fun():
     now_time = datetime.datetime.now()
-    print('---------------------------')
+    print('------------------------')
     print(now_time)
     try:
         with request.urlopen(
-                "http://81.68.209.220/1"
+                "http://81.68.209.220/"
         ) as file:
-            print(file.status)
-            print(file.reason)
-    except Exception as e:
-        print(e)
+            if file.status == 200:
+                print('不发短信')
+    except:
+        print('发短信')
 
 
+# 定义sleep函数
 def sleep(hour, min, sec):
     return hour * 3600 + min * 60 + sec
 
 
-# 定时
+# 定时执行
 seconds = sleep(0, 0, 1)
+print()
 while True:
     time.sleep(seconds)
     fun()
