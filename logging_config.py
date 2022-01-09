@@ -1,4 +1,9 @@
-import logging
+# @Time    : 2022/1/5 17:14
+# @Author  : hexios
+# @Email   : hexiosr@outlook.com
+# @File    : logging_config.py
+
+import logging.handlers
 
 
 class Config:
@@ -9,14 +14,17 @@ class Config:
     logger.setLevel(logging.INFO)
 
     # creating a formatter
+    LOG_FILE = 'default.log'
     formatter = logging.Formatter('%(asctime)s | %(levelname)s -> %(message)s')
+    file_handler = logging.handlers.RotatingFileHandler("log/default.log", maxBytes=1024 * 1024, backupCount=5,
+                                                        encoding='UTF-8')
 
     # creating a handler to log on the filesystem
-    file_handler = logging.FileHandler('default.log')
     file_handler.setFormatter(formatter)
     file_handler.setLevel(logging.INFO)
 
     # adding handlers to our logger
+
     logger.addHandler(file_handler)
 
     # logger.info('this is a log message...')

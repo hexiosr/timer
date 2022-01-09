@@ -5,15 +5,12 @@
 
 from urllib import request
 import time
-import datetime
 import ssl
 import logging_config
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
 logger = logging_config.Config().get_config()
-
-logger.info(' 开始')
 
 
 def fun():
