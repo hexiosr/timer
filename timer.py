@@ -23,10 +23,8 @@ def fun():
             if file.status == 200:
                 logger.info(file.status)
                 logger.info(file.read())
-                logger.info('不发送 ')
     except Exception as e:
         smtp.emails()
-        logger.info(' 发送')
         logger.info(e)
 
 
@@ -36,7 +34,7 @@ def sleep(hour, min, sec):
 
 
 # 定时
-seconds = sleep(12, 0, 0)
+seconds = sleep(0, 0, 10)
 print()
 while True:
     time.sleep(seconds)
