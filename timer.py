@@ -9,6 +9,7 @@ import time
 from urllib import request
 
 import logging_config
+import sms
 import smtp
 
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -18,13 +19,16 @@ logger = logging_config.Config().get_config()
 def fun():
     try:
         with request.urlopen(
-                "http://81.68.209.220:25555/123"
+                "http://81.68.209.220:25555/1111.html"
         ) as file:
             if file.status == 200:
+                print('正常')
                 logger.info(file.status)
                 logger.info(file.read())
     except Exception as e:
-        smtp.emails()
+        print('异常')
+        smtp.emails()  # 邮件
+        sms.sms1()  # 短信
         logger.info(e)
 
 
