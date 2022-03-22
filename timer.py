@@ -4,30 +4,29 @@
 # @Email   : hexiosr@icloud.com
 # @File    : timer.py
 
-from urllib import request
-import time
 import ssl
-import logging_config
+import time
+from urllib import request
 
+import logging_config
+import smtp
 
 ssl._create_default_https_context = ssl._create_unverified_context
 logger = logging_config.Config().get_config()
-
-print(' 开始')
 
 
 def fun():
     try:
         with request.urlopen(
-                "http://cdn.guopan.cn/uploads"
+                "http://81.68.209.220:25555/123"
         ) as file:
             if file.status == 200:
                 logger.info(file.status)
                 logger.info(file.read())
-                logger.info('不发短信 ')
+                logger.info('不发送 ')
     except Exception as e:
-
-        logger.info(' 发短信')
+        smtp.emails()
+        logger.info(' 发送')
         logger.info(e)
 
 
@@ -37,7 +36,7 @@ def sleep(hour, min, sec):
 
 
 # 定时
-seconds = sleep(0, 0, 10)
+seconds = sleep(12, 0, 0)
 print()
 while True:
     time.sleep(seconds)
