@@ -1,6 +1,7 @@
+# coding=UTF-8
 # @Time    : 2022/1/5 17:14
 # @Author  : hexios
-# @Email   : hexiosr@outlook.com
+# @Email   : hexiosr@icloud.com
 # @File    : logging_config.py
 
 import logging.handlers
@@ -16,7 +17,7 @@ class Config:
     # creating a formatter
     LOG_FILE = 'default.log'
     formatter = logging.Formatter('%(asctime)s | %(levelname)s -> %(message)s')
-    file_handler = logging.handlers.RotatingFileHandler("log/default.log", maxBytes=1024 * 1024, backupCount=5,
+    file_handler = logging.handlers.RotatingFileHandler("log/default.log", maxBytes=1024 * 1024 * 5, backupCount=5,
                                                         encoding='UTF-8')
 
     # creating a handler to log on the filesystem
