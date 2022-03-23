@@ -13,7 +13,7 @@ from urllib import request
 from twilio.rest import Client
 
 import config
-from config import logging_config
+import logging_config
 
 ssl._create_default_https_context = ssl._create_unverified_context
 logger = logging_config.Config().get_config()
@@ -49,7 +49,7 @@ def fun():
         client = Client(config.account_sid, config.auth_token)
         message = client.messages.create(
             to="+xxxx",
-            from_="+xxxx",
+            from_="+xxxxx",
             body="系统出现异常：" + f'{e} !')
         logger.info("短信发送成功！")
         logger.info(e)
